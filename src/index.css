@@ -1,0 +1,157 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--normal-font);
+}
+
+:root{
+  --background-color: #172531;
+  --primary-color: #101c2c;
+  --secondary-color: #09263a;
+  --text-color: #ffffff;
+  --accent-color: #14c0d6;
+  --border-radius: 8px;
+  --border-color: #0690a85d;
+  --box-shadow: 0 4px 8px rgba(5, 5, 31, 0.753);
+  --box-highlight: 0 2px 8px rgba(20, 192, 214, 0.15);
+  --normal-font: Tahoma;
+  --common-width: 1200px;
+}
+
+button{
+  cursor: pointer;
+}
+
+body{
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+header{
+  background-color: var(--primary-color);
+  padding: 20px;
+  text-align: center;
+  box-shadow: var(--box-shadow);
+  border: 0.5px solid var(--border-color);
+}
+
+.header-summary{
+  margin-top: 20px;
+}
+
+.header-summary>*{
+  margin-top: 20px;
+}
+
+.add-habit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+/* Styles for the "+" add icon */
+.add-icon {
+  display: absolute;
+  width: 40px; /* Increased size for better visibility */
+  height: 40px;
+  padding: 0;
+  position: relative;
+  cursor: pointer;
+}
+
+/* The two bars that form the "+" sign */
+.add-icon::before,
+.add-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--accent-color); /* Accent color for the "+" */
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+/* Vertical bar of "+" */
+.add-icon::before {
+  left: 50%;
+  top: 25%;
+  width: 4px;
+  height: 50%;
+  transform: translateX(-50%);
+}
+
+/* Horizontal bar of "+" */
+.add-icon::after {
+  top: 50%;
+  left: 25%;
+  width: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+}
+
+.add-habit-btn:hover>.add-icon::before,
+.add-habit-btn:hover>.add-icon::after {
+  background: var(--primary-color); /* Invert "+" color on hover */
+}
+
+.add-habit-btn:hover>.add-icon{
+  transition: 0.2s all;
+}
+
+.add-habit-btn {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  width: 45px;
+  /* width: fit-content; */
+  border-radius: 24px; /* Slightly rounded */
+  background: var(--primary-color);
+  box-shadow: var(--box-highlight);
+  transition: width 0.5s cubic-bezier(0.4,0,0.2,1), background 0.2s, box-shadow 0.2s, border-radius 0.5s;
+  border: 2px solid transparent;
+  overflow: hidden; /* Hide text overflow */
+}
+
+.add-habit-btn:hover {
+  width: 120px; /* Expand width on hover */
+}
+
+button:hover{
+  color: var(--background-color);
+  background: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(20, 192, 214, 0.3);
+  border: 2px solid var(--primary-color);
+  border-radius: 32px;
+  transition: width 0.5s cubic-bezier(0.4,0,0.2,1), background 0.2s, box-shadow 0.2s, border-radius 0.5s;
+}
+
+/* Hide button text by default */
+.add-habit-btn span {
+  font-family: var(--normal-font);
+  max-width: 0;
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1), max-width 0.5s cubic-bezier(0.4,0,0.2,1);
+  overflow: hidden;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Show text on hover */
+.add-habit-btn:hover span {
+  display: inline-block;
+  opacity: 1;
+  max-width: fit-content;
+  pointer-events: auto;
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1), max-width 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.habits-container{
+  padding: 0% 20px 40px 20px;
+  max-width: 80%;
+  margin: 0 auto; /*Este está durísimo jaja*/
+
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 450px));
+  column-gap: 2rem;
+}
